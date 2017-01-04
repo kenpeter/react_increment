@@ -1,0 +1,25 @@
+{
+  "name": "react_increment",
+  "version": "1.0.0",
+  "description": "react_increment",
+  "main": "index.js",
+  "scripts": {
+    "start": "npm run build",
+    "build": "webpack -d && cp src/index.html dist/index.html && cp src/favicon.ico dist/favicon.ico && webpack-dev-server --content-base src/ --inline --hot --history-api-fallback",
+    "build:prod": "webpack -p && cp src/index.html dist/index.html"
+  },
+  "dependencies": {
+    "babel-core": "^6.21.0",
+    "babel-loader": "^6.2.10",
+    "babel-preset-es2015": "^6.18.0",
+    "babel-preset-react": "^6.16.0",
+    "babel-preset-stage-2": "^6.18.0",
+    "react": "^15.4.1",
+    "react-dom": "^15.4.1",
+    "webpack": "^1.14.0",
+    "webpack-dev-server": "^1.16.2"
+  },
+  "devDependencies": {},
+  "author": "",
+  "license": "ISC"
+}
