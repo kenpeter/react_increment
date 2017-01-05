@@ -22026,9 +22026,9 @@
 	
 	var _react2 = _interopRequireDefault(_react);
 	
-	var _Counter = __webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module \"../components/Counter\""); e.code = 'MODULE_NOT_FOUND'; throw e; }()));
+	var _MyComp = __webpack_require__(/*! ../components/MyComp */ 179);
 	
-	var _Counter2 = _interopRequireDefault(_Counter);
+	var _MyComp2 = _interopRequireDefault(_MyComp);
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
@@ -22053,7 +22053,7 @@
 	      return _react2.default.createElement(
 	        "div",
 	        { className: "container" },
-	        _react2.default.createElement(_Counter2.default, null)
+	        _react2.default.createElement(_MyComp2.default, null)
 	      );
 	    }
 	  }]);
@@ -22062,6 +22062,120 @@
 	}(_react2.default.Component);
 	
 	exports.default = App;
+
+/***/ },
+/* 179 */
+/*!**************************************!*\
+  !*** ./src/app/components/MyComp.js ***!
+  \**************************************/
+/***/ function(module, exports, __webpack_require__) {
+
+	"use strict";
+	
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+	
+	var _react = __webpack_require__(/*! react */ 177);
+	
+	var _react2 = _interopRequireDefault(_react);
+	
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+	
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+	
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+	
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+	
+	// export default class
+	// my comp
+	// extend react.component
+	var MyComp = function (_React$Component) {
+	  _inherits(MyComp, _React$Component);
+	
+	  // constructor
+	  // props
+	  function MyComp(props) {
+	    _classCallCheck(this, MyComp);
+	
+	    /* some init state */
+	    var _this = _possibleConstructorReturn(this, (MyComp.__proto__ || Object.getPrototypeOf(MyComp)).call(this, props));
+	    // super
+	    // props
+	
+	
+	    _this.method1 = function (arg1, arg2) {
+	      // define () => {}
+	      // so we don't need to bind "this"
+	    };
+	
+	    _this.state = { users: [] };
+	
+	    // method 2 is not fat arrow func
+	    // so need to bind this
+	    _this.method2 = _this.method2.bind(_this);
+	    return _this;
+	  }
+	
+	  _createClass(MyComp, [{
+	    key: "method2",
+	    value: function method2(arg1, arg2) {
+	      /* another custom method */
+	      /* define it in natural way, usually need to bind it to this in constructor */
+	    }
+	  }, {
+	    key: "componentDidMount",
+	    value: function componentDidMount() {
+	      var _this2 = this;
+	
+	      /* usually do some init AJAX calls here. similar to jQuery('document').ready() */
+	      /* example: fetching users and setting the state */
+	      fetch('https://reqres.in/api/users').then(function (res) {
+	        return res.json();
+	      }).then(function (data) {
+	        return _this2.setState({ users: data.data });
+	      });
+	    }
+	  }, {
+	    key: "render",
+	    value: function render() {
+	      /* the render() function is always needed */
+	      /* example: display all users */
+	
+	      //test
+	      console.log(this.state.users);
+	
+	      var userList = this.state.users.map(function (u) {
+	        return _react2.default.createElement(
+	          "li",
+	          null,
+	          "u"
+	        );
+	      });
+	      return _react2.default.createElement(
+	        "div",
+	        null,
+	        _react2.default.createElement(
+	          "h1",
+	          null,
+	          this.props.compTitle
+	        ),
+	        _react2.default.createElement(
+	          "ul",
+	          null,
+	          "userList"
+	        )
+	      );
+	    }
+	  }]);
+	
+	  return MyComp;
+	}(_react2.default.Component);
+	
+	exports.default = MyComp;
 
 /***/ }
 /******/ ]);
