@@ -29,6 +29,18 @@ export default class MyComp extends React.Component {
     /* define it in natural way, usually need to bind it to this in constructor */
   }
 
+  // https://stackoverflow.com/questions/5915096/get-random-item-from-javascript-array
+  myRandom = () => {
+    let items = [
+      "list-group-item-success",
+      "list-group-item-info",
+      "list-group-item-warning",
+      "list-group-item-danger"
+    ];
+    let item = items[ Math.floor( Math.random() * items.length ) ];
+    return item;
+  }
+
   componentDidMount() {
     /* usually do some init AJAX calls here. similar to jQuery('document').ready() */
     /* example: fetching users and setting the state */
@@ -50,12 +62,20 @@ export default class MyComp extends React.Component {
     // https://www.quora.com/How-do-I-iterate-over-a-list-in-React-JS
     // users is array, then map
     // in li item key={i}
+    
+    // https://stackoverflow.com/questions/35543325/react-call-components-method-from-nested-function-in-render-method
+    let self = this;
+    
     return (
       <div>
         <h1>{this.props.compTitle}</h1>
         <ul className="list-group">
         {this.state.users.map(function(user, i){
-          return <li key={i} className="list-group-item">
+          let random_class = self.myRandom();
+          let class_name = "list-group-item " + random_class;
+          //console.log(random_class);
+          
+          return <li key={i} className={class_name}>
             <img src={user.avatar} />
             &nbsp; {user.id}, {user.first_name}, {user.last_name}, {user.first_name}
             </li>
